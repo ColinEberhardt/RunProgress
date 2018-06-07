@@ -26,7 +26,7 @@ export default class Chart extends React.Component{
                     Weekly Total: { cumulativeDistance[cumulativeDistance.length - 1] }km
                 </Text>
                 <Text style={[styles.text, styles.average]}>
-                    Daily Average: { (cumulativeDistance.reduce((tot, cur) => tot + cur) / cumulativeDistance.length).toFixed(1) }km
+                    Daily Average: { this.props.dailyAverage.toFixed(1) }km
                 </Text>
                 <Line values={ cumulativeDistance }></Line>
             </View>

@@ -14,15 +14,6 @@ const { width } = Dimensions.get('window');
 
 export default class Day extends Component {
 
-    //   props: {
-    //     symbol: string,
-    //     name: string,
-    //     price: number,
-    //     change: number,
-    //     active: boolean,
-    //     onPress: Function,
-    //   };
-
     render() {
         const {
             day,
@@ -60,7 +51,7 @@ export default class Day extends Component {
 const styles = StyleSheet.create({
     container: {
         borderRadius: 10,
-        padding: 10,
+        padding: 8,
         width: width / 2 + 10,
     },
     row: {

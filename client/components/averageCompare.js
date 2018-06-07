@@ -21,9 +21,9 @@ export default class AverageCompare extends PureComponent {
       : <Icon name={value < 0 ? 'caret-down' : 'caret-up'} style={styles.icon} />;
     return (
       <View style={getBadgeStyles(value)}>
-        {icon}
+        
         <Text style={styles.value} numberOfLines={1}>
-          {Math.abs(value).toFixed(1)}km
+          {icon} {Math.abs(value).toFixed(1)}<Text>km</Text>
         </Text>
       </View>
     );
@@ -39,6 +39,7 @@ const styles = StyleSheet.create({
     paddingLeft: 5,
     paddingRight: 5,
     minHeight: 16,
+    paddingBottom: 3
   },
   good: { backgroundColor: '#4CAF50' },
   bad: { backgroundColor: '#FF5505' },
@@ -49,7 +50,7 @@ const styles = StyleSheet.create({
     marginTop: 0,
   },
   icon: {
-    fontSize: 18,
+    fontSize: 16,
     lineHeight: 16,
     marginRight: 2,
     color: '#FFFFFF',
