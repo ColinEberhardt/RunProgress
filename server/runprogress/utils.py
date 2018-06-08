@@ -8,3 +8,7 @@ def getLastMonday():
         lastMonday -= oneday
 
     return lastMonday
+
+def getThisWeek():
+    # Needs implementing
+    return []
