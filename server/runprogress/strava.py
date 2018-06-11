@@ -13,7 +13,8 @@ class Strava:
         self.me = self.client.get_athlete()
 
     def get_activities(self):
-        return {
+
+        hardCodedData = {
             "weeklyRuns": [
                 { "day": "Monday", "distance": 1 },
                 { "day": "Tuesday", "distance": 1 },
@@ -25,14 +26,15 @@ class Strava:
             ],
             "dailyAverage": (1+1+0+1+2+5+3) / 7
         }
+
         # after=getLastMonday()
         gotActivities = list(self.client.get_activities())
         foundActivities = []
         for x in gotActivities:
             foundActivities.append(x.to_dict())
-
+        
         # Probably need to aggregate distances or something for a chart. Will have to get an array of days of the current week mapped against cumulative distance
 
-        # Replace this harcoded response with real data!
+        return hardCodedData # Replace this harcoded response with real data!
 
 strava = Strava()

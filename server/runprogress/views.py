@@ -9,4 +9,7 @@ def index(request):
     return JsonResponse({"body": "Strava athlete is called " + athlete.firstname + " " + athlete.lastname})
 
 def weeksRuns(request):
-    return JsonResponse(strava.get_activities())
+
+    formattedActivities = strava.get_activities()
+
+    return JsonResponse(formattedActivities)
