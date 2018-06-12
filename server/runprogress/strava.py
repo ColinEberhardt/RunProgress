@@ -4,6 +4,7 @@ import json
 import os
 
 class Strava:
+
     def __init__(self):
         self.client = Client()
         # Necessary to do this with file paths so that it works no matter how the server is started
@@ -22,19 +23,19 @@ class Strava:
                 { "day": "Thursday", "distance": 1 },
                 { "day": "Friday", "distance": 2 },
                 { "day": "Saturday", "distance": 5 },
-                { "day": "Sunday", "distance": 3 }
+                { "day": "Sunday", "distance": None }
             ],
             "dailyAverage": (1+1+0+1+2+5+3) / 7
         }
-
-        # after=getLastMonday()
-        gotActivities = list(self.client.get_activities())
-        foundActivities = []
-        for x in gotActivities:
-            foundActivities.append(x.to_dict())
         
-        # Probably need to aggregate distances or something for a chart. Will have to get an array of days of the current week mapped against cumulative distance
-
         return hardCodedData # Replace this harcoded response with real data!
+        
+        # gotActivities = list(self.client.get_activities(after=getLastMonday()))
+        # foundActivities = []
+        # for x in gotActivities:
+        #     if x.type == "Run":
+        #         foundActivities.append(x.to_dict())
+        
+        # Probably need to aggregate distances or something for a chart. Will have to get an array of days of the current week mapped against cumulative distance        
 
 strava = Strava()

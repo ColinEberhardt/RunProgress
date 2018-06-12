@@ -9,7 +9,7 @@ export default class Chart extends React.Component{
         let newValues = [0];
         for(let x of this.props.weeklyRuns){
             newValues.push(
-                newValues[newValues.length - 1] + parseFloat(x.distance)
+                newValues[newValues.length - 1] + (x.distance == null ? 0 : parseFloat(x.distance))
             )
         }
 
@@ -39,7 +39,6 @@ const styles = StyleSheet.create({
     container: {
         flex: 38,
         backgroundColor: '#ececec'
-        // backgroundColor: '#FFFFFF'
     },
     text: {
         fontSize: 24,

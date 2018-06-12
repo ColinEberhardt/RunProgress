@@ -10,5 +10,14 @@ def getLastMonday():
     return lastMonday
 
 def getThisWeek():
-    # Needs implementing
-    return []
+    
+    days = []
+
+    dayToAdd = getLastMonday()
+    oneday = datetime.timedelta(days=1)
+
+    for i in range(0,7):
+        days.append(dayToAdd)
+        dayToAdd += oneday
+
+    return days
