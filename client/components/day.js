@@ -20,27 +20,29 @@ export default class Day extends Component {
             distance,
         } = this.props;
         return (
-            <View
-                style={[styles.container]}
-            >
+            <View style={[styles.container]}>
                 <View style={styles.row}>
                     <Text style={styles.text} numberOfLines={1}>
                         { day }
                     </Text>
-                    <View style={styles.right}>
-                        <Text style={styles.text} numberOfLines={1}>
-                            { distance } km
-                        </Text>
-                    </View>
+                    { distance != null ? (
+                        <View style={styles.right}>
+                            <Text style={styles.text} numberOfLines={1}>
+                                { distance } km
+                            </Text>
+                        </View>
+                    ) : null}
                 </View>
 
                 <View style={styles.row}>
                     <Text style={[styles.text]} numberOfLines={1}>
                         
                     </Text>
-                    <View style={styles.right}>
-                        <AverageCompare value={ distance - this.props.average } />
-                    </View>
+                    { distance != null ? (
+                        <View style={styles.right}>
+                            <AverageCompare value={ distance - this.props.average } />
+                        </View>
+                    ) : null}
                 </View>
             </View>
         );

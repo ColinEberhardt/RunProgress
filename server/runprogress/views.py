@@ -1,15 +1,27 @@
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
-from .strava import strava
+from .dataProcessor import DataProcessor
+from django.views.decorators.csrf import csrf_exempt
 
 def index(request):
 
-    athlete = strava.me
+    # athlete = dataProcessor.me
 
-    return JsonResponse({"body": "Strava athlete is called " + athlete.firstname + " " + athlete.lastname})
+    return JsonResponse({})
 
+@csrf_exempt
 def weeksRuns(request):
 
-    formattedActivities = strava.get_activities()
+    token = request.POST.get("strava-token", False)
+
+    if not token:
+        return JsonResponse({
+            "error": True,
+            "message": "Strava token not supplied"
+        })
+
+    dataProcessor = DataProcessor(token)
+
+    formattedActivities = dataProcessor.get_week_report()
 
     return JsonResponse(formattedActivities)
