@@ -3,13 +3,13 @@ You are working on an app which is designed to give people a quick user-friendly
 #### Connect to strava
 1. Set up an app on Strava in the developers area.
 1. Set up a config file so that you can authenticate your connection to the Strava API.
-    * Look at the `setUp` method in the `StravaTestCase` class in the [server/runprogress/views.py](../server/runprogress/views.py) file. It is reading from a configuration file. You'll need to create this file and format it correctly with your secret token from Strava. Talk to your mentor if you need help with the format.
-    * While this will authenticate your connection to strava for your backend tests, each client (mobile phone app) will provide it's own token when it requests data from the server. Talk to your mentor about why we do this.
+    * Look at the `setUp` method in the `StravaTestCase` class in the [server/runprogress/views.py](../server/runprogress/views.py) file. It is reading from a configuration file. It uses this to authenticate so that you can run tests which involve the strava API without having to have a client connect to the server. You'll need to create this file and format it correctly with your secret token from Strava. Talk to your mentor if you need help with the format.
+    * While this will authenticate your connection to strava for your backend tests, each client (mobile phone app) will provide it's own token when it requests data from the server. Talk to your mentor about why we do this and what we would do instead if we were to release an app like this to the public.
     * To authenticate the front-end, look at the import line `import secretToken from './credentials';` in the [client/App.js](../client/App.js) file. It imports the token in a variable from another file. Create this file and put the token in.
     * Talk to your mentor about why these files weren't already in the repository and how we keep sensitive information like passwords secure.
-1. Ensure this is working correctly by running your unit tests. You should have an error. Read the message the test outputs and correct the test.
+1. Ensure this is working correctly by running your unit tests. You should have an error regarding the name field you're testing for. Read the message the test outputs and correct the test.
 #### Gather your data
-1. You can now write some more tests (read about [TDD](https://en.wikipedia.org/wiki/Test-driven_development) if interested) to check that you execute the following tasks correctly. At this stage you will be defining what the input and output of the functions you write will be before you write them.
+1. You can now write some more tests (read about [TDD](https://en.wikipedia.org/wiki/Test-driven_development) if interested) to check that you execute the following tasks correctly. At this stage you will be defining what the input and output of the functions you write will be before you write them. This will give you an idea of whether what you haven written is correct without having to push errors to the client and then try to trace them back to what happened.
 1. Retrieve the data about your activities from Strava.
     * Read the [API documentation](https://pythonhosted.org/stravalib/api.html) for StravaLib (the Strava API helper) and find an appropriate method to call to get your activity details.
 #### Compute the data
@@ -23,6 +23,7 @@ You are working on an app which is designed to give people a quick user-friendly
     * Have a think about what you are calculating. Should you include the days where you haven't done any activity in your calculations or should you leave them out?
 1. Return all of this data to the client-side in the format it expects to see the result!
 
+## Help
 You can find documentation on any resources you will need at the following places (if it takes more than 5 minutes of reading, feel free to ask your mentor!):
 * [Strava developers](https://developers.strava.com/)
 * [Strava API library](https://pythonhosted.org/stravalib/api.html)
