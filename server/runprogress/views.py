@@ -3,10 +3,8 @@ from django.http import HttpResponse, JsonResponse
 from .dataProcessor import DataProcessor
 from django.views.decorators.csrf import csrf_exempt
 
+@csrf_exempt
 def index(request):
-
-    # athlete = dataProcessor.me
-
     return JsonResponse({})
 
 @csrf_exempt
