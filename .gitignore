@@ -1,4 +1,1 @@
-client/credentials.js
-server/runprogress/StravaConfig.json
-server/runprogress/__pycache__/
-server/server/__pycache__/
+.vscode
