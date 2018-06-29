@@ -1,7 +1,7 @@
 from django.test import TestCase
 from .dataProcessor import DataProcessor 
 from .utils import getLastMonday, getThisWeek
-import calendar, os, json
+import calendar, os, json, datetime
 
 class StravaTestCase(TestCase):
 
@@ -14,9 +14,9 @@ class StravaTestCase(TestCase):
         self.assertIsInstance(self.dataProcessor, DataProcessor)
 
     def test_strava_athlete_is_me(self):
-        # ToDo: Change these names once the strava api is authenticated
-        self.assertEqual(self.dataProcessor.me.firstname, "YOUR_FIRST_NAME_HERE")
-        self.assertEqual(self.dataProcessor.me.lastname, "YOUR_LAST_NAME_HERE")
+    
+        self.assertEqual(self.dataProcessor.me.firstname, "Jess")
+        self.assertEqual(self.dataProcessor.me.lastname, "Eberhardt")
 
     # ToDo: Write your other data processing tests here
 
@@ -24,6 +24,12 @@ class UtilsTestCase(TestCase):
 
     def test_getLastMonday_gives_a_monday(self):
         self.assertEqual(getLastMonday().weekday(), calendar.MONDAY)
+    
+    def test_getLastMonday_gives_last_monday(self):
+        today = datetime.date.today()
+        mon = getLastMonday()
+        diff = today - mon
+        self.assertTrue(diff.days <= 7)
 
     def test_getThisWeek_has_correct_number_of_days(self):
         self.assertEqual(len(getThisWeek()), 7)
@@ -37,3 +43,12 @@ class UtilsTestCase(TestCase):
         self.assertEqual(gotWeek[4].weekday(), calendar.FRIDAY)
         self.assertEqual(gotWeek[5].weekday(), calendar.SATURDAY)
         self.assertEqual(gotWeek[6].weekday(), calendar.SUNDAY)
+    
+    def test_weekdays_are_in_same_week(self):
+        gotWeek = getThisWeek()
+        today = datetime.date.today().isocalendar()
+        for day in gotWeek :
+            ic = day.isocalendar()
+            self.assertEqual(today[0], ic[0])
+            self.assertEqual(today[1], ic[1])
+

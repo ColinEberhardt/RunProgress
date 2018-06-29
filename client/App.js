@@ -26,15 +26,17 @@ export default class App extends React.Component {
 	}
 
 	componentDidMount(){
-		fetch('http://10.0.2.2/weeksRuns', {
+		let formdata = new FormData();
+		formdata.append("strava-token", secretToken);
+
+		fetch('http://localhost:8000/weeksRuns', {
 			method: "POST",
 			headers: {
-				Accept: 'application/json',
-				'Content-Type': 'application/json',
+				// Accept: 'application/json',
+				'Content-Type': 'multipart/form-data',
+				mode: "cors"
 			},
-			body: JSON.stringify({
-				'strava-token': secretToken,
-			}),
+			body: formdata
 		})
 		.then((response) => response.json())
 		.then((responseJson) => {

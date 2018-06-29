@@ -40,9 +40,9 @@
             "type": "python",
             "request": "launch",
             "program": "${workspaceFolder}/server/manage.py",
+            "pythonPath": "/usr/local/bin/python3",
             "args": [
                 "runserver",
-                "80",
                 "--noreload",
                 "--nothreading"
             ],
@@ -57,6 +57,7 @@
             "request": "launch",
             "cwd": "${workspaceFolder}/server",
             "program": "${workspaceFolder}/server/manage.py",
+            "pythonPath": "/usr/local/bin/python3",
             "args": [
                 "test",
             ],

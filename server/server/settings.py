@@ -28,7 +28,8 @@ DEBUG = True
 # The two below are added for development, second one being for viewing on android emulator
 ALLOWED_HOSTS = [
     "localhost",
-    "10.0.2.2"
+    "10.0.2.2",
+    "127.0.0.1"
 ]
 
 

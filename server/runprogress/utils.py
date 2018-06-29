@@ -1,23 +1,17 @@
 import datetime, calendar
 
 def getLastMonday():
-    lastMonday = datetime.datetime.today()
-    oneday = datetime.timedelta(days=1)
-
-    while lastMonday.weekday() != calendar.MONDAY:
-        lastMonday -= oneday
-
-    return lastMonday
+    today = datetime.date.today()
+    if today.weekday() == 0:
+        return today
+    else:
+        monday = today  - datetime.timedelta(days=today.weekday())
+        return monday
 
 def getThisWeek():
-    
-    days = []
-
-    dayToAdd = getLastMonday()
-    oneday = datetime.timedelta(days=1)
-
-    for i in range(0,7):
-        days.append(dayToAdd)
-        dayToAdd += oneday
-
-    return days
+    monday = getLastMonday()
+    week = [monday]
+    for n in range (1,7):
+       day = monday + datetime.timedelta(days = n)
+       week.append(day)
+    return week

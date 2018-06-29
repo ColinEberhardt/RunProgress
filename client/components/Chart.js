@@ -23,10 +23,10 @@ export default class Chart extends React.Component{
         return (
             <View style={styles.container}>
                 <Text style={[styles.text, styles.title]}>
-                    Weekly Total: { cumulativeDistance[cumulativeDistance.length - 1] }km
+                    Total: { cumulativeDistance[cumulativeDistance.length - 1] }km
                 </Text>
                 <Text style={[styles.text, styles.average]}>
-                    Daily Average: { this.props.dailyAverage.toFixed(1) }km
+                    Average: { this.props.dailyAverage.toFixed(1) }km
                 </Text>
                 <Line values={ cumulativeDistance }></Line>
             </View>
